@@ -24,7 +24,7 @@ abstract class Obstacle(
         update()
     }
 
-    protected abstract fun update()
+    protected open fun update(){}
 
     fun draw(){
         Screen.fill(color)

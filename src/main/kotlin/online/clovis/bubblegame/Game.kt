@@ -10,11 +10,17 @@ class Game(val players: Set<Player>) {
 
     private var obstacles = ArrayList<Obstacle>()
 
+    var speed = 0f
+        private set
+
     fun update(){
+        speed += 0.001f
+        ground -= speed
+
         if(Screen.random(10f) < 1)
             obstacles.add(Platform(
                     Screen.random(Screen.width.toFloat()),
-                    50f
+                    ground - Screen.height
                 )
             )
 
@@ -31,6 +37,7 @@ class Game(val players: Set<Player>) {
         update()
 
         Screen.background(0)
+        Screen.translate(1f, Screen.height - ground)
         obstacles.forEach { it.draw() }
         players.forEach { it.draw() }
     }

@@ -13,10 +13,6 @@ class Platform(
         5f
 ) {
 
-    override fun update() {
-        this.speedY = 0.2f
-    }
-
     override fun applyColliding(player: Player) {
         player.collide()
     }
