@@ -5,8 +5,16 @@ data class Player(
         var color: Int
 ) {
 
-    var x: Float = Screen.width / 2f
-    var y: Float = 0f
+    var x = Screen.width.toFloat() / 2
+        private set
+    var y = 0f
+        private set
+
+    var speed = 0f
+        private set
+
+    val width = 20f
+    val halfWidth = width / 2
 
     init {
         println("+ Joueur: $this")

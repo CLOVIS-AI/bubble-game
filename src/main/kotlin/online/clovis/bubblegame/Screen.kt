@@ -5,6 +5,7 @@ import processing.core.PApplet
 object Screen : PApplet() {
 
     var game: Game? = null
+        private set
 
     override fun settings() {
         size(500, 500)
