@@ -16,6 +16,7 @@ object Screen : PApplet() {
 
         ellipseMode(CENTER)
         rectMode(CENTER)
+        noStroke()
 
         game = Game(
             setOf(
