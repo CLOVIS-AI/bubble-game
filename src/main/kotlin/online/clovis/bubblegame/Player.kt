@@ -41,8 +41,8 @@ data class Player(
 
     fun collide() {
         if(speed >= 0)
-            speed = 0f
-        speed = -5f
+            speed = -5f
+        speed -= 0.5f
     }
 
     fun draw(){
