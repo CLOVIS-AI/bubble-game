@@ -13,6 +13,9 @@ object Screen : PApplet() {
     override fun setup() {
         background(0)
 
+        ellipseMode(CENTER)
+        rectMode(CENTER)
+
         game = Game(
             setOf(
                 Player("Ivan", color(255, 0, 0))
