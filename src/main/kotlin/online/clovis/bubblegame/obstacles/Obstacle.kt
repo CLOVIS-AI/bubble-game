@@ -45,4 +45,10 @@ abstract class Obstacle(
 
     protected abstract fun applyColliding(player: Player)
 
+    fun isOnScreen(): Boolean {
+        return x + sizeX/2 >= 0
+            && x - sizeX/2 <= Screen.width
+            && y - sizeX/2 <= Screen.height
+    }
+
 }
