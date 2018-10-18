@@ -5,11 +5,16 @@ data class Player(
         var color: Int
 ) {
 
-    var x: Int = Screen.width / 2
-    var y: Int = 0
+    var x: Float = Screen.width / 2f
+    var y: Float = 0f
 
     init {
         println("+ Joueur: $this")
+    }
+
+    fun draw(){
+        Screen.fill(color)
+        Screen.ellipse(x, y, 20f, 20f)
     }
 
 }
