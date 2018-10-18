@@ -6,18 +6,15 @@ data class Player(
 ) {
 
     var x = Screen.width.toFloat() / 2
-        private set
     var y = 0f
-        private set
 
     var speed = 0f
-        private set
 
     val width = 20f
     val halfWidth = width / 2
 
     init {
-        println("+ Joueur: $this")
+        println("+ Player: $this")
     }
 
     fun move(game: Game){
@@ -26,8 +23,14 @@ data class Player(
         y += speed
         if(y + halfWidth >= game.ground){
             y = game.ground - halfWidth
-            speed = -speed
+            collide()
         }
+    }
+
+    fun collide() {
+        if(speed >= 0)
+            speed = 0f
+        speed -= 5f
     }
 
     fun draw(){
