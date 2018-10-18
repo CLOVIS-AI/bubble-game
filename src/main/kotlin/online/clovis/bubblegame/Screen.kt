@@ -14,7 +14,7 @@ object Screen : PApplet() {
     }
 
     override fun draw() {
-        
+
     }
 
 }
