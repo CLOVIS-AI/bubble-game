@@ -1,6 +1,10 @@
 package online.clovis.bubblegame
 
-object Game {
+class Game(val players: Set<Player>) {
 
-    var players: ArrayList<Player>()
+    fun draw(){
+        Screen.background(0)
+        players.forEach { it.draw() }
+    }
+
 }
