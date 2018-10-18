@@ -7,7 +7,10 @@ class Game(val players: Set<Player>) {
 
     fun draw(){
         Screen.background(0)
-        players.forEach { it.draw() }
+        players.forEach {
+            it.move(this)
+            it.draw()
+        }
     }
 
 }

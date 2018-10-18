@@ -20,9 +20,19 @@ data class Player(
         println("+ Joueur: $this")
     }
 
+    fun move(game: Game){
+        speed += 0.1f
+
+        y += speed
+        if(y + halfWidth >= game.ground){
+            y = game.ground - halfWidth
+            speed = -speed
+        }
+    }
+
     fun draw(){
         Screen.fill(color)
-        Screen.ellipse(x, y, 20f, 20f)
+        Screen.ellipse(x, y, width, width)
     }
 
 }
