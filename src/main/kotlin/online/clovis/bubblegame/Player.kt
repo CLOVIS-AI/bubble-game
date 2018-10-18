@@ -2,8 +2,15 @@ package online.clovis.bubblegame
 
 data class Player(
         var name: String,
-        var color: Int
+        var color: Int,
+        val moveLeft: Int,
+        val moveRight: Int
 ) {
+
+    val keys: Array<Pair<Int, Boolean>> = arrayOf(
+            moveLeft to false,
+            moveRight to false
+    )
 
     var x = Screen.width.toFloat() / 2
     var y = 0f
@@ -20,6 +27,11 @@ data class Player(
     fun move(game: Game){
         speed += 0.1f
 
+        if(keys[0].second)
+            x -= 2f
+        if(keys[1].second)
+            x += 2f
+
         y += speed
         if(y + halfWidth >= game.ground){
             y = game.ground - halfWidth
@@ -30,7 +42,7 @@ data class Player(
     fun collide() {
         if(speed >= 0)
             speed = 0f
-        speed -= 5f
+        speed = -5f
     }
 
     fun draw(){

@@ -20,13 +20,31 @@ object Screen : PApplet() {
 
         game = Game(
             setOf(
-                Player("Ivan", color(255, 0, 0))
+                Player("Ivan", color(255, 0, 0), 'q'.toInt(), 'd'.toInt())
             )
         )
     }
 
     override fun draw() {
         game!!.draw()
+    }
+
+    override fun keyPressed() {
+        game!!.players.forEach {
+            it.keys.forEachIndexed { index, pair ->
+                if(pair.first == key.toInt() || pair.first == keyCode)
+                    it.keys[index] = pair.first to true
+            }
+        }
+    }
+
+    override fun keyReleased() {
+        game!!.players.forEach {
+            it.keys.forEachIndexed { index, pair ->
+                if(pair.first == key.toInt() || pair.first == keyCode)
+                    it.keys[index] = pair.first to false
+            }
+        }
     }
 
 }
