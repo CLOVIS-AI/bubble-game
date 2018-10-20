@@ -13,8 +13,4 @@ class Platform(
         5f
 ) {
 
-    override fun applyColliding(player: Player) {
-        player.collide()
-    }
-
 }

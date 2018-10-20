@@ -9,6 +9,7 @@ object Screen : PApplet() {
 
     override fun settings() {
         size(500, 500)
+        //fullScreen()
     }
 
     override fun setup() {
@@ -20,13 +21,18 @@ object Screen : PApplet() {
 
         game = Game(
             setOf(
-                Player("Ivan", color(255, 0, 0), 'q'.toInt(), 'd'.toInt())
+                Player("Ivan", color(255, 0, 0), 'q'.toInt(), 'd'.toInt(), 'z'.toInt())
             )
         )
     }
 
     override fun draw() {
         game!!.draw()
+
+        fill(255)
+        /*text("FPS: ${frameRate.toInt()}\n" +
+             "Obstacles: ${game!!.obstacles.size}",
+                10f, 10f)*/
     }
 
     override fun keyPressed() {

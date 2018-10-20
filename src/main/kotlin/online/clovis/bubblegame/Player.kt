@@ -4,13 +4,16 @@ data class Player(
         var name: String,
         var color: Int,
         val moveLeft: Int,
-        val moveRight: Int
+        val moveRight: Int,
+        val jump: Int
 ) {
 
     val keys: Array<Pair<Int, Boolean>> = arrayOf(
             moveLeft to false,
-            moveRight to false
+            moveRight to false,
+            jump to false
     )
+    var doubleJumpAvailable = true
 
     var x = Screen.width.toFloat() / 2
     var y = 0f
@@ -31,6 +34,10 @@ data class Player(
             x -= 2f
         if(keys[1].second)
             x += 2f
+        if(keys[2].second && doubleJumpAvailable) {
+            speed = -5f
+            doubleJumpAvailable = false
+        }
 
         y += speed
         if(y + halfWidth >= game.ground){
@@ -43,6 +50,8 @@ data class Player(
         if(speed >= 0)
             speed = -5f
         speed -= 0.5f
+
+        doubleJumpAvailable = true
     }
 
     fun draw(){

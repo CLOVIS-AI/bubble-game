@@ -1,5 +1,6 @@
 package online.clovis.bubblegame.obstacles
 
+import online.clovis.bubblegame.Game
 import online.clovis.bubblegame.Player
 import online.clovis.bubblegame.Screen
 
@@ -43,7 +44,9 @@ abstract class Obstacle(
             applyColliding(player)
     }
 
-    protected abstract fun applyColliding(player: Player)
+    protected open fun applyColliding(player: Player){
+        player.collide()
+    }
 
     fun isOnScreen(): Boolean {
         return x + sizeX/2 >= 0
