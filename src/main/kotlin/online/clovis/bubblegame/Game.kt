@@ -8,7 +8,7 @@ class Game(val players: Set<Player>) {
     var ground = Screen.height.toFloat()
         private set
 
-    private var obstacles = ArrayList<Obstacle>()
+    var obstacles = ArrayList<Obstacle>()
 
     var speed = 0f
         private set
@@ -24,7 +24,7 @@ class Game(val players: Set<Player>) {
                 )
             )
 
-        obstacles.removeIf { !it.isOnScreen() }
+        obstacles.removeIf { !it.isOnScreen(this) }
         obstacles.forEach { it.move() }
 
         players.forEach { player ->
@@ -36,10 +36,12 @@ class Game(val players: Set<Player>) {
     fun draw(){
         update()
 
+        Screen.pushMatrix()
         Screen.background(0)
         Screen.translate(1f, Screen.height - ground)
         obstacles.forEach { it.draw() }
         players.forEach { it.draw() }
+        Screen.popMatrix()
     }
 
 }

@@ -48,10 +48,10 @@ abstract class Obstacle(
         player.collide()
     }
 
-    fun isOnScreen(): Boolean {
+    fun isOnScreen(game: Game): Boolean {
         return x + sizeX/2 >= 0
             && x - sizeX/2 <= Screen.width
-            && y - sizeX/2 <= Screen.height
+            && y - sizeX/2 <= game.ground
     }
 
 }
