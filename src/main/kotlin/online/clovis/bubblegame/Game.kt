@@ -20,14 +20,15 @@ class Game(val players: Set<Player>) {
         if(players.asSequence().any { it.y < ground - Screen.height })
             speedBoost += 0.025f
         else if(speedBoost > 0)
-            speedBoost -= 0.040f
+            speedBoost -= 0.050f
         else if(speedBoost < 0)
             speedBoost = 0f
 
         speed += 0.001f
-        ground -= speed + speedBoost
+        val currentSpeed = speed + speedBoost
+        ground -= currentSpeed
 
-        if(Screen.random(5f) < 1)
+        if(Screen.random(5f) < (currentSpeed/10) + 1)
             obstacles.add(Platform(
                     Screen.random(Screen.width.toFloat()),
                     ground - Screen.height
