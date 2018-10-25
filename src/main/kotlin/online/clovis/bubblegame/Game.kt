@@ -5,19 +5,29 @@ import online.clovis.bubblegame.obstacles.Platform
 
 class Game(val players: Set<Player>) {
 
-    var ground = Screen.height.toFloat()
+    var ground: Float = 0f
+        private set
+
+    var speed: Float = 0f
+        private set
+
+    var speedBoost: Float = 0f
         private set
 
     var obstacles = ArrayList<Obstacle>()
 
-    var speed = 0f
-        private set
-
     fun update(){
-        speed += 0.001f
-        ground -= speed
+        if(players.asSequence().any { it.y < ground - Screen.height })
+            speedBoost += 0.025f
+        else if(speedBoost > 0)
+            speedBoost -= 0.040f
+        else if(speedBoost < 0)
+            speedBoost = 0f
 
-        if(Screen.random(10f) < 1)
+        speed += 0.001f
+        ground -= speed + speedBoost
+
+        if(Screen.random(5f) < 1)
             obstacles.add(Platform(
                     Screen.random(Screen.width.toFloat()),
                     ground - Screen.height
