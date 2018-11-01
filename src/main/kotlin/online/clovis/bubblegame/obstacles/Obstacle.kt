@@ -54,4 +54,17 @@ abstract class Obstacle(
             && y - sizeX/2 <= game.ground
     }
 
+    companion object Handler {
+
+        fun create(g: Game): Obstacle {
+            val x = Screen.random(Screen.width.toFloat())
+            val y = g.ground - Screen.height
+            when (Screen.random(0f, 100f).toInt()) {
+                in 0..2 -> return HealthRegenerator(x, y)
+                else -> return Platform(x, y)
+            }
+        }
+
+    }
+
 }

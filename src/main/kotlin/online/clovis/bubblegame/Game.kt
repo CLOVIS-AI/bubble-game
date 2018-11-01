@@ -30,11 +30,7 @@ class Game(val players: MutableSet<Player>) {
         ground -= currentSpeed
 
         if(Screen.random(5f) < (currentSpeed/10) + 1)
-            obstacles.add(Platform(
-                    Screen.random(Screen.width.toFloat()),
-                    ground - Screen.height
-                )
-            )
+            obstacles.add(Obstacle.create(this))
 
         obstacles.removeIf { !it.isOnScreen(this) }
         obstacles.forEach { it.move() }
