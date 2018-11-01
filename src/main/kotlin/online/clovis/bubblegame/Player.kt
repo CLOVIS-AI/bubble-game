@@ -23,6 +23,12 @@ data class Player(
     val width = 20f
     val halfWidth = width / 2
 
+    var health = 100
+        set(value) {field = value; displayHealth = 60}
+    var displayHealth = 60
+    val isAlive: Boolean
+        get() = health >= 0
+
     init {
         println("+ Player: $this")
     }
@@ -42,6 +48,7 @@ data class Player(
         y += speed
         if(y + halfWidth >= game.ground){
             y = game.ground - halfWidth
+            health--
             collide()
         }
     }
@@ -57,6 +64,13 @@ data class Player(
     fun draw(){
         Screen.fill(color)
         Screen.ellipse(x, y, width, width)
+
+        if(displayHealth >= 0){
+            displayHealth--
+
+            Screen.fill(color, (displayHealth*255/60).toFloat())
+            Screen.rect(x, y-width/2-10, health.toFloat()/2, 5f)
+        }
     }
 
 }
