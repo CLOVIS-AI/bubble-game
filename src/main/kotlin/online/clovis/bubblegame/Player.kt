@@ -1,5 +1,7 @@
 package online.clovis.bubblegame
 
+import online.clovis.bubblegame.particles.Particle
+
 data class Player(
         var name: String,
         var color: Int,
@@ -49,6 +51,10 @@ data class Player(
         if(y + halfWidth >= game.ground){
             y = game.ground - halfWidth
             health--
+
+            if(health <= 0)
+                Particle.create(x, y, color, 100)
+
             collide()
         }
     }
@@ -59,6 +65,8 @@ data class Player(
         speed -= 0.5f
 
         doubleJumpAvailable = true
+
+        Particle.create(x, y, color, 5)
     }
 
     fun draw(){

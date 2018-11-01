@@ -2,8 +2,9 @@ package online.clovis.bubblegame
 
 import online.clovis.bubblegame.obstacles.Obstacle
 import online.clovis.bubblegame.obstacles.Platform
+import online.clovis.bubblegame.particles.Particle
 
-class Game(val players: Set<Player>) {
+class Game(val players: MutableSet<Player>) {
 
     var ground: Float = 0f
         private set
@@ -38,6 +39,7 @@ class Game(val players: Set<Player>) {
         obstacles.removeIf { !it.isOnScreen(this) }
         obstacles.forEach { it.move() }
 
+        players.removeIf { !it.isAlive }
         players.forEach { player ->
             player.move(this)
             obstacles.forEach { it collideWith player }
@@ -50,8 +52,11 @@ class Game(val players: Set<Player>) {
         Screen.pushMatrix()
         Screen.background(0)
         Screen.translate(1f, Screen.height - ground)
+        Particle.draw(Screen.game!!)
+
         obstacles.forEach { it.draw() }
         players.forEach { it.draw() }
+
         Screen.popMatrix()
     }
 
