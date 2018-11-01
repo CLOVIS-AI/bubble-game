@@ -61,6 +61,7 @@ abstract class Obstacle(
             val y = g.ground - Screen.height
             when (Screen.random(0f, 100f).toInt()) {
                 in 0..2 -> return HealthRegenerator(x, y)
+                in 3..5 -> return Blocker(x, y)
                 else -> return Platform(x, y)
             }
         }
