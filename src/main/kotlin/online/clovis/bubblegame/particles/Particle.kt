@@ -8,7 +8,8 @@ class Particle(
         var y: Float,
         val color: Int,
         var speedX: Float,
-        var speedY: Float
+        var speedY: Float,
+        val size: Float
 ) {
 
     fun draw(){
@@ -23,7 +24,7 @@ class Particle(
             x = 0f
 
         Screen.fill(color)
-        Screen.ellipse(x, y, 3f, 3f)
+        Screen.ellipse(x, y, size, size)
     }
 
     companion object Handler {
@@ -38,7 +39,8 @@ class Particle(
                         y,
                         color,
                         Screen.random(-strength, strength),
-                        Screen.random(-strength, strength)
+                        Screen.random(-strength, strength),
+                        Screen.random(2f, 5f)
                 ))
             }
         }
