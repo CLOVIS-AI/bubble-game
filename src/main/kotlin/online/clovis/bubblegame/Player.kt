@@ -47,6 +47,11 @@ data class Player(
             doubleJumpAvailable = false
         }
 
+        if(x < 0)
+            x = Screen.width.toFloat()
+        else if(x > Screen.width.toFloat())
+            x = 0f
+
         y += speed
         if(y + halfWidth >= game.ground){
             y = game.ground - halfWidth
