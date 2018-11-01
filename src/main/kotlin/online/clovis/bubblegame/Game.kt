@@ -55,7 +55,7 @@ class Game(val players: MutableSet<Player>) {
         Particle.draw(Screen.game!!)
 
         obstacles.forEach { it.draw() }
-        players.forEach { it.draw() }
+        players.forEach { it.draw(this) }
 
         Screen.popMatrix()
     }

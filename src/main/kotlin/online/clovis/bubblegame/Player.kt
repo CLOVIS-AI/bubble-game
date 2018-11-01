@@ -74,9 +74,14 @@ data class Player(
         Particle.create(x, y, color, 5)
     }
 
-    fun draw(){
+    fun draw(g: Game){
         Screen.fill(color)
-        Screen.ellipse(x, y, width, width)
+        val top = g.ground - Screen.height
+        if(y >= top - width) {
+            Screen.ellipse(x, y, width, width)
+        } else {
+            Screen.triangle(x, top+5, x-7, top+14, x+7, top+14)
+        }
 
         if(displayHealth >= 0){
             displayHealth--
