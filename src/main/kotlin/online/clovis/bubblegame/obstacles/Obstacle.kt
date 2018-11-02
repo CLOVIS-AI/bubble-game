@@ -3,6 +3,7 @@ package online.clovis.bubblegame.obstacles
 import online.clovis.bubblegame.Game
 import online.clovis.bubblegame.Player
 import online.clovis.bubblegame.Screen
+import online.clovis.bubblegame.particles.Particle.Handler.create
 
 abstract class Obstacle(
         protected var x: Float,
@@ -45,6 +46,8 @@ abstract class Obstacle(
     }
 
     protected open fun applyColliding(player: Player){
+        create(player.x, player.y, color, 1)
+
         player.collide()
     }
 
@@ -59,10 +62,10 @@ abstract class Obstacle(
         fun create(g: Game): Obstacle {
             val x = Screen.random(Screen.width.toFloat())
             val y = g.ground - Screen.height
-            when (Screen.random(0f, 100f).toInt()) {
-                in 0..2 -> return HealthRegenerator(x, y)
-                in 3..5 -> return Blocker(x, y)
-                else -> return Platform(x, y)
+            return when (Screen.random(0f, 100f).toInt()) {
+                in 0..2 -> HealthRegenerator(x, y)
+                in 3..5 -> Blocker(x, y)
+                else -> Platform(x, y)
             }
         }
 
