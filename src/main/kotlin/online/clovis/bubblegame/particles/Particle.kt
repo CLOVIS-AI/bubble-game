@@ -18,10 +18,8 @@ class Particle(
         x += speedX
         y += speedY
 
-        if(x < 0)
-            x = Screen.width.toFloat()
-        else if(x > Screen.width.toFloat())
-            x = 0f
+        if(x < 0 || x > Screen.width.toFloat())
+            speedX = -speedX
 
         Screen.fill(color)
         Screen.ellipse(x, y, size, size)
