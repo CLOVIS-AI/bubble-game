@@ -20,8 +20,10 @@ object Screen : PApplet() {
         noStroke()
 
         game = Game(
-            setOf(
-                Player("Ivan", color(255, 0, 0), 'q'.toInt(), 'd'.toInt(), 'z'.toInt())
+            mutableSetOf(
+                Player("Ivan", color(255, 0, 0), 'q'.toInt(), 'd'.toInt(), 'z'.toInt()),
+                Player("Marina", color(0, 0, 255), '4'.toInt(), '6'.toInt(), '8'.toInt()),
+                Player("Invité", color(255, 255, 0), 'j'.toInt(), 'l'.toInt(), 'i'.toInt())
             )
         )
     }
