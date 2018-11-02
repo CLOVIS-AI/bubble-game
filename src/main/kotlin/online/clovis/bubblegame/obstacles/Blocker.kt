@@ -11,7 +11,7 @@ class Blocker(
         x, y,
         Color(200, 0, 0),
         40f,
-        5f
+        30f
 ) {
 
     override fun applyColliding(player: Player) {
