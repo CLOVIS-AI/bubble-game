@@ -43,7 +43,7 @@ data class Player(
         if(keys[1].second)
             x += 2f
         if(keys[2].second && doubleJumpAvailable) {
-            speed = -5f
+            speed = -7f
             doubleJumpAvailable = false
         }
 
