@@ -38,7 +38,7 @@ object Screen : PApplet() {
     override fun keyPressed() {
         game!!.players.forEach {
             it.keys.forEachIndexed { index, pair ->
-                if(pair.first == key.toInt() || pair.first == keyCode)
+                if(pair.first == key.toInt())
                     it.keys[index] = pair.first to true
             }
         }
@@ -47,7 +47,7 @@ object Screen : PApplet() {
     override fun keyReleased() {
         game!!.players.forEach {
             it.keys.forEachIndexed { index, pair ->
-                if(pair.first == key.toInt() || pair.first == keyCode)
+                if(pair.first == key.toInt())
                     it.keys[index] = pair.first to false
             }
         }
