@@ -1,10 +1,9 @@
 package online.clovis.bubblegame
 
 import online.clovis.bubblegame.obstacles.Obstacle
-import online.clovis.bubblegame.obstacles.Platform
 import online.clovis.bubblegame.particles.Particle
 
-class Game(val players: MutableSet<Player>) {
+object Game{
 
     var ground: Float = 0f
         private set
@@ -16,6 +15,12 @@ class Game(val players: MutableSet<Player>) {
         private set
 
     var obstacles = ArrayList<Obstacle>()
+
+    lateinit var players: MutableList<Player>
+
+    fun init(players: MutableList<Player>){
+        this.players = players
+    }
 
     fun update(){
         if(players.asSequence().any { it.y < ground - Screen.height })
@@ -48,7 +53,7 @@ class Game(val players: MutableSet<Player>) {
         Screen.pushMatrix()
         Screen.background(0)
         Screen.translate(1f, Screen.height - ground)
-        Particle.draw(Screen.game!!)
+        Particle.draw()
 
         obstacles.forEach { it.draw() }
         players.forEach { it.draw(this) }

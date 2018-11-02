@@ -4,9 +4,6 @@ import processing.core.PApplet
 
 object Screen : PApplet() {
 
-    var game: Game? = null
-        private set
-
     override fun settings() {
         size(500, 500)
         //fullScreen()
@@ -19,8 +16,8 @@ object Screen : PApplet() {
         rectMode(CENTER)
         noStroke()
 
-        game = Game(
-            mutableSetOf(
+        Game.init(
+            mutableListOf(
                 Player("Ivan", color(255, 0, 0), 'q'.toInt(), 'd'.toInt(), 'z'.toInt()),
                 Player("Marina", color(0, 0, 255), '4'.toInt(), '6'.toInt(), '8'.toInt()),
                 Player("Invité", color(255, 255, 0), 'j'.toInt(), 'l'.toInt(), 'i'.toInt())
@@ -29,7 +26,7 @@ object Screen : PApplet() {
     }
 
     override fun draw() {
-        game!!.draw()
+        Game.draw()
 
         fill(255)
         /*text("FPS: ${frameRate.toInt()}\n" +
@@ -38,7 +35,7 @@ object Screen : PApplet() {
     }
 
     override fun keyPressed() {
-        game!!.players.forEach {
+        Game.players.forEach {
             it.keys.forEachIndexed { index, pair ->
                 if(pair.first == key.toInt())
                     it.keys[index] = pair.first to true
@@ -47,7 +44,7 @@ object Screen : PApplet() {
     }
 
     override fun keyReleased() {
-        game!!.players.forEach {
+        Game.players.forEach {
             it.keys.forEachIndexed { index, pair ->
                 if(pair.first == key.toInt())
                     it.keys[index] = pair.first to false

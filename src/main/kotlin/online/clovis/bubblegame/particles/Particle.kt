@@ -43,9 +43,9 @@ class Particle(
             }
         }
 
-        fun draw(g: Game){
+        fun draw(){
             particles.removeIf {
-                it.y >= g.ground
+                it.y >= Game.ground
             }
 
             particles.forEach {
