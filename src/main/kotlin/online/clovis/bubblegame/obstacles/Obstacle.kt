@@ -3,6 +3,7 @@ package online.clovis.bubblegame.obstacles
 import online.clovis.bubblegame.Game
 import online.clovis.bubblegame.Player
 import online.clovis.bubblegame.Screen
+import online.clovis.bubblegame.particles.Particle.Handler.create
 
 abstract class Obstacle(
         protected var x: Float,
@@ -45,6 +46,8 @@ abstract class Obstacle(
     }
 
     protected open fun applyColliding(player: Player){
+        create(player.x, player.y, color, 1)
+
         player.collide()
     }
 
