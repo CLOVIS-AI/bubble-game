@@ -1,5 +1,6 @@
 package online.clovis.bubblegame
 
+import online.clovis.utils.Color
 import processing.core.PApplet
 
 object Screen : PApplet() {
@@ -18,9 +19,9 @@ object Screen : PApplet() {
 
         Game.init(
             mutableListOf(
-                Player("Ivan", color(255, 0, 0), 'q'.toInt(), 'd'.toInt(), 'z'.toInt()),
-                Player("Marina", color(0, 0, 255), '4'.toInt(), '6'.toInt(), '8'.toInt()),
-                Player("Invité", color(255, 255, 0), 'j'.toInt(), 'l'.toInt(), 'i'.toInt())
+                Player("Ivan", Color(255, 0, 0), 'q'.toInt(), 'd'.toInt(), 'z'.toInt()),
+                Player("Marina", Color(0, 0, 255), '4'.toInt(), '6'.toInt(), '8'.toInt()),
+                Player("Invité", Color(255, 255, 0), 'j'.toInt(), 'l'.toInt(), 'i'.toInt())
             )
         )
     }
@@ -50,6 +51,15 @@ object Screen : PApplet() {
                     it.keys[index] = pair.first to false
             }
         }
+    }
+
+    fun fill(c: Color){
+        this.fill(
+                c.red.toFloat(),
+                c.green.toFloat(),
+                c.blue.toFloat(),
+                c.alpha.toFloat()
+        )
     }
 
 }

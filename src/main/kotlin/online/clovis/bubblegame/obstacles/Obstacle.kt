@@ -4,11 +4,12 @@ import online.clovis.bubblegame.Game
 import online.clovis.bubblegame.Player
 import online.clovis.bubblegame.Screen
 import online.clovis.bubblegame.particles.Particle.Handler.create
+import online.clovis.utils.Color
 
 abstract class Obstacle(
         protected var x: Float,
         protected var y: Float,
-        protected var color: Int,
+        protected var color: Color,
         protected var sizeX: Float,
         protected var sizeY: Float
 ) {

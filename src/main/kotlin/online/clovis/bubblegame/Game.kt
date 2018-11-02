@@ -2,6 +2,7 @@ package online.clovis.bubblegame
 
 import online.clovis.bubblegame.obstacles.Obstacle
 import online.clovis.bubblegame.particles.Particle
+import online.clovis.utils.Color
 
 object Game{
 
@@ -18,12 +19,18 @@ object Game{
 
     lateinit var players: MutableList<Player>
 
+    var backgroundColor = Color(0, 0, 0)
+    val oppositeColor
+        get() = -backgroundColor
+    var nextColor = backgroundColor
+    var nextColorChange = 1
+
     fun init(players: MutableList<Player>){
         this.players = players
     }
 
     fun update(){
-        if(players.asSequence().any { it.y < ground - Screen.height })
+        if(players.any { it.y < ground - Screen.height })
             speedBoost += 0.025f
         else if(speedBoost > 0)
             speedBoost -= 0.050f
@@ -50,8 +57,17 @@ object Game{
     fun draw(){
         update()
 
+        if(speed >= nextColorChange * 1) {
+            nextColor = Color.random()
+            nextColorChange++
+            println("The background color will now be $nextColor")
+        }
+
+        backgroundColor = backgroundColor stepTowards nextColor
+        val color = backgroundColor + (speedBoost * 5).toInt()
+
         Screen.pushMatrix()
-        Screen.background(0)
+        Screen.background(color.asInt)
         Screen.translate(1f, Screen.height - ground)
         Particle.draw()
 

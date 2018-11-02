@@ -1,15 +1,15 @@
 package online.clovis.bubblegame.obstacles
 
 import online.clovis.bubblegame.Player
-import online.clovis.bubblegame.Screen
 import online.clovis.bubblegame.particles.Particle
+import online.clovis.utils.Color
 
 class HealthRegenerator(
         x: Float,
         y: Float
 ) : Obstacle(
         x, y,
-        Screen.color(0, 200, 0),
+        Color(0, 200, 0),
         50f,
         5f
 ) {

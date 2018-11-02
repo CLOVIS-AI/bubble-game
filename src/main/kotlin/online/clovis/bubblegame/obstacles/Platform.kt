@@ -1,17 +1,22 @@
 package online.clovis.bubblegame.obstacles
 
+import online.clovis.bubblegame.Game
 import online.clovis.bubblegame.Player
-import online.clovis.bubblegame.Screen
+import online.clovis.utils.Color
 
 class Platform(
         x: Float,
         y: Float
 ) : Obstacle(
         x, y,
-        Screen.color(125, 125, 125),
+        Color(125, 125, 125),
         50f,
         5f
 ) {
+
+    override fun update() {
+        color = Game.oppositeColor
+    }
 
     override fun applyColliding(player: Player) {
         super.applyColliding(player)

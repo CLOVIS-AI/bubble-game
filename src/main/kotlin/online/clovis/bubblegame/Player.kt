@@ -1,10 +1,11 @@
 package online.clovis.bubblegame
 
 import online.clovis.bubblegame.particles.Particle
+import online.clovis.utils.Color
 
 data class Player(
         var name: String,
-        var color: Int,
+        var color: Color,
         val moveLeft: Int,
         val moveRight: Int,
         val jump: Int
@@ -86,7 +87,13 @@ data class Player(
         if(displayHealth >= 0){
             displayHealth--
 
-            Screen.fill(color, (displayHealth*255/60).toFloat())
+            val c = Color(
+                    color.red,
+                    color.green,
+                    color.blue,
+                    displayHealth*255/60
+            )
+            Screen.fill(c)
             Screen.rect(x, y-width/2-10, health.toFloat()/2, 5f)
         }
     }
