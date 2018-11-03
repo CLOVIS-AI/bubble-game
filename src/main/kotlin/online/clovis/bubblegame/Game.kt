@@ -65,7 +65,7 @@ object Game{
         }
 
         backgroundColor = backgroundColor stepTowards nextColor
-        val color = backgroundColor + (speedBoost * Screen.random(-5f, 5f)).toInt()
+        val color = backgroundColor + (speedBoost * 20).toInt()
 
         Screen.pushMatrix()
         Screen.background(color.asInt)
