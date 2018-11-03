@@ -41,7 +41,8 @@ object Game{
         val currentSpeed = speed + speedBoost
         ground -= currentSpeed
 
-        if(Screen.random(5f) < (currentSpeed/10) + 1)
+        val chance = Screen.width / 400f
+        if(Screen.random(chance) < (currentSpeed/10) + 1)
             obstacles.add(Obstacle.create(this))
 
         obstacles.removeIf { !it.isOnScreen(this) }
