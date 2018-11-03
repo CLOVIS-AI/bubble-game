@@ -9,9 +9,12 @@ data class Color(val asInt: Int) {
     val green:  Int by lazy { asInt shr 8  and 0xFF }
     val blue:   Int by lazy { asInt        and 0xFF }
 
-    constructor(red: Int, green: Int, blue: Int): this(Screen.color(red, green, blue, 255))
-
-    constructor(red: Int, green: Int, blue: Int, alpha: Int): this(Screen.color(red, green, blue, alpha))
+    constructor(
+            red: Int,
+            green: Int,
+            blue: Int,
+            alpha: Int = 255
+    ): this(Screen.color(red, green, blue, alpha))
 
     operator fun plus(other: Color): Color {
         return Color(
