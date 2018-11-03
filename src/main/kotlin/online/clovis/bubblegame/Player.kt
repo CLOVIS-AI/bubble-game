@@ -67,8 +67,8 @@ data class Player(
 
     fun collide() {
         if(speed >= 0)
-            speed = -5f
-        speed -= 0.5f
+            speed = -5f - Game.speed / 10
+        speed -= 0.5f + Game.speed / 50
 
         doubleJumpAvailable = true
 
